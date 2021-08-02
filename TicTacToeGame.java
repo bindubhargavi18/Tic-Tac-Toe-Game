@@ -5,7 +5,7 @@ import java.util.*;
 public class TicTacToeGame 
 {
 	static final char board[]=new char[10];
-	char playerLetter,computerLetter;
+	static char playerLetter,computerLetter,tossValue;
 	int playerPosition,computerPosition;
 	Scanner s=new Scanner(System.in);
 	
@@ -14,13 +14,22 @@ public class TicTacToeGame
 		TicTacToeGame tictac=new TicTacToeGame();
 		tictac.playerComputerLetter();
 		tictac.gameBoard();
+		tictac.toss();
 		for(int i=1;i<10;i++)
 		{
+			if(tossValue=='H')
+			{
 			tictac.playerGame();
 			tictac.computerGame();
-			tictac.showBoard();
+			}
+			else
+			{
+				tictac.computerGame();
+				tictac.playerGame();
+			}
 		}
-	}	
+	}
+
 	public void playerComputerLetter()
 	{
 		System.out.println("Choose a letter x or o:");	
@@ -51,9 +60,10 @@ public class TicTacToeGame
 			if(board[playerPosition]=='-')
 			{
 				board[playerPosition]='x';
+				TicTacToeGame tictac=new TicTacToeGame();
+				tictac.showBoard();
 				break;
-			}
-			
+			}	
 		}
 	}
 	public void computerGame()
@@ -66,9 +76,28 @@ public class TicTacToeGame
 			if(board[computerPosition]=='-')
 			{
 				board[computerPosition]='o';
+				TicTacToeGame tictac=new TicTacToeGame();
+				tictac.showBoard();
 				break;
-			}	
+			}
+			
 		}    
+	}
+	public void toss()
+	{
+		double flip=Math.random();
+		if(flip<0.5)
+		{
+			tossValue='H';
+			System.out.println("player won toss, Player starts first");
+		}
+		
+		else
+		{
+			tossValue='T';
+			System.out.println("computer won toss, computer starts first");
+		}
+			
 	}
 	public void showBoard()
 	{
