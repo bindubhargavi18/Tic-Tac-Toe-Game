@@ -9,19 +9,8 @@ public class TicTacToeGame
 	{
 		TicTacToeGame tictac=new TicTacToeGame();
 		tictac.playerComputerLetter();
-		tictac.gameBoard();
-	}
-	public void gameBoard()
-	{
-		int i;
-		for(i=1;i<10;i++)
-		{
-		  board[i]='-';
-		}
-		System.out.println(board[1]+" "+board[2]+" "+board[3]);
-		System.out.println(board[4]+" "+board[5]+" "+board[6]);
-		System.out.println(board[7]+" "+board[8]+" "+board[9]);
-	}
+		tictac.showBoard();
+	}	
 	public void playerComputerLetter()
 	{
 		char playerLetter,computerLetter;
@@ -44,6 +33,17 @@ public class TicTacToeGame
 			computerLetter='x';
 			System.out.println("computer letter: "+computerLetter+" \nPlayer Letter: "+playerLetter);
 		}	
+	}
+	public void showBoard()
+	{
+		int i;
+		for(i=1;i<10;i++)
+		{
+		  board[i]='-';
+		}
+		System.out.println(board[1]+" "+board[2]+" "+board[3]);
+		System.out.println(board[4]+" "+board[5]+" "+board[6]);
+		System.out.println(board[7]+" "+board[8]+" "+board[9]);
 	}
 }
 
