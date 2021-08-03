@@ -4,9 +4,11 @@ import java.util.*;
 
 public class TicTacToeGame 
 {
-	static final char board[]=new char[10];
+	static char board[]=new char[10];
+	//static String line=null;
 	static char playerLetter,computerLetter,tossValue;
-	int playerPosition,computerPosition;
+	static char r;
+	static int playerPosition,computerPosition,flag=0;
 	Scanner s=new Scanner(System.in);
 	
 	public static void main(String[] args) 
@@ -20,12 +22,38 @@ public class TicTacToeGame
 			if(tossValue=='H')
 			{
 			tictac.playerGame();
-			tictac.computerGame();
+			tictac.winner();
+			//System.out.println(flag);
+				if(flag==1)
+				{
+					System.out.println("Congratulations " + r + " won");
+					break;
+				}
+					tictac.computerGame();
+					tictac.winner();
+					if(flag==1)
+					{
+						System.out.println("Congratulations " +r+ " won");
+						break;
+					}
+					
 			}
 			else
 			{
 				tictac.computerGame();
+				tictac.winner();
+				if(flag==1)
+				{
+					System.out.println("Congratulations " +r+ " won");
+					break;
+				}
 				tictac.playerGame();
+				tictac.winner();
+				if(flag==1)
+				{
+					System.out.println("Congratulations " +r+ " won");
+					break;
+				}
 			}
 		}
 	}
@@ -59,7 +87,7 @@ public class TicTacToeGame
 			playerPosition=s.nextInt();	
 			if(board[playerPosition]=='-')
 			{
-				board[playerPosition]='x';
+				board[playerPosition]=playerLetter;
 				TicTacToeGame tictac=new TicTacToeGame();
 				tictac.showBoard();
 				break;
@@ -75,7 +103,7 @@ public class TicTacToeGame
 			System.out.println("computer Position "+computerPosition);
 			if(board[computerPosition]=='-')
 			{
-				board[computerPosition]='o';
+				board[computerPosition]=computerLetter;
 				TicTacToeGame tictac=new TicTacToeGame();
 				tictac.showBoard();
 				break;
@@ -96,9 +124,59 @@ public class TicTacToeGame
 		{
 			tossValue='T';
 			System.out.println("computer won toss, computer starts first");
-		}
+		} 
 			
 	}
+	public void winner()
+	{
+		
+		if((board[1]=='x'&&board[2]=='x' &&board[3]=='x')||
+				(board[1]=='o'&&board[2]=='o'&&board[3]=='o'))
+		{
+			r=board[1];
+			flag=1;
+		}	
+		else if((board[4]=='x'&&board[5]=='x'&&board[6]=='x')||
+				(board[4]=='o'&&board[5]=='o'&&board[6]=='o'))
+		{
+			r=board[4];
+			flag=1;
+		}
+		else if((board[7]=='x'&&board[8]=='x'&&board[9]=='x')||
+				(board[7]=='o'&&board[8]=='o'&&board[9]=='o'))
+		{
+			r=board[7];
+			flag=1;
+		}
+		else if((board[1]=='x'&&board[4]=='x'&&board[7]=='x')||
+				(board[1]=='o'&&board[4]=='o'&&board[7]=='o'))
+		{
+			r=board[1];
+			flag=1;
+		}
+		else if((board[2]=='x'&&board[5]=='x'&&board[8]=='x')||(board[2]=='o'&&board[5]=='o'&&board[8]=='o'))
+		{
+			r=board[2];
+			flag=1;
+		}
+		else if((board[3]=='x'&&board[6]=='x'&&board[9]=='x')||(board[3]=='o'&&board[6]=='o'&&board[9]=='o'))
+		{
+			r=board[3];
+			flag=1;
+		}
+		else if((board[1]=='x'&&board[5]=='x'&&board[9]=='x')||(board[1]=='o'&&board[5]=='o'&&board[9]=='o'))
+		{
+			r=board[1];
+			flag=1;
+		}
+		else if((board[3]=='x'&&board[5]=='x'&&board[7]=='x')||(board[3]=='o'&&board[5]=='o'&&board[7]=='o'))
+		{
+			r=board[3];
+			flag=1;
+		}
+	
+	}
+	
 	public void showBoard()
 	{
 			System.out.println(board[1]+" "+board[2]+" "+board[3]);
