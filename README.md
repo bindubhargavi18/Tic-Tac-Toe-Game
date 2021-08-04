@@ -5,7 +5,7 @@ Java JDK is used with version 16.0.1
 The IDE used is eclipse with version 4.20
 
 I have written the java program for computer and user play. I created different methods and called from main().
-###Methods declared
+### Methods declared
 * for playerGame
 * for computerGame
 * for tossing who should play first
